@@ -23,6 +23,14 @@
             }
         },
 
+        watch: {
+            followers(newFollowers, oldFollowers) {
+                if(oldFollowers < newFollowers) {
+                    console.log(`${this.user.username} has gained a Follower!`)
+                }
+            }
+        },
+
         computed: {
             fullname() {
                 return `${this.user.firstName} ${this.user.lastName}`;
