@@ -1,51 +1,15 @@
 <template>
     <div id="app">
-        @{{user.username}} - {{fullname}}
-        <strong>Followers: </strong> {{ followers }}
-        <button @click="followUser">Follow</button>
+        <UserProfile />
     </div>
 </template>
 
 <script>
+    import UserProfile from "./components/UserProfile";
+
     export default {
         name: 'App',
-        data() {
-            return {
-                followers: 0,
-                user: {
-                    id: 1,
-                    username: '_rejuancse',
-                    firstName: 'Rejuan',
-                    lastName: 'Ahamed',
-                    email: 'rejuancse@gmail.com',
-                    isAdmin: true
-                }
-            }
-        },
-
-        watch: {
-            followers(newFollowers, oldFollowers) {
-                if(oldFollowers < newFollowers) {
-                    console.log(`${this.user.username} has gained a Follower!`)
-                }
-            }
-        },
-
-        computed: {
-            fullname() {
-                return `${this.user.firstName} ${this.user.lastName}`;
-            }
-        },
-
-        methods: {
-            followUser() {
-                this.followers++
-            }
-        },
-
-        mounted() {
-            this.followUser();
-        }
+        components: { UserProfile }
     }
 </script>
 
