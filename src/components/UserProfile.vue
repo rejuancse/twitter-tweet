@@ -16,7 +16,7 @@
                     <label for="newTwootType"><strong>Type: </strong></label>
                     <select id="newTwootType">
                         <option :value="option.value" v-for="(option, index) in twootTypes" :key="index">
-{{ option.name }}
+                            {{ option.name }}
                         </option>
                     </select>
                 </div>
@@ -100,7 +100,7 @@
         display: grid;
         grid-template-columns: 1fr 3fr;
         width: 100%;
-        padding: 50px 5%;
+        padding: 50px 0;
         text-align: left;
     }
     .user-profile__user-panel {

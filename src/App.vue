@@ -22,5 +22,6 @@
         color: #2c3e50;
         display: flex;
         flex-direction: column;
+        padding: 0 5%;
     }
 </style>
