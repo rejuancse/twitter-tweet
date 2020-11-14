@@ -11,8 +11,7 @@
         </div>
 
         <div class="user-profile__twoots-wrapper">
-            <!-- <div class="user-profile__twoot" v-bind:key="twoot.id" v-for="twoot in user.twoots"> -->
-            <div class="user-profile__twoot" v-for="twoot in user.twoots" :key="twoot.id">
+            <div class="user-profile__twoot" v-bind:key="twoot.id" v-for="twoot in user.twoots">
                 {{ twoot.content }}
             </div>
         </div>
@@ -36,7 +35,7 @@
                     isAdmin: true,
                     twoots: [
                         { id: 1, content: 'Twotter is Amazing' },
-                        { id: 2, content: 'Twotter is Awesome' }
+                        { id: 2, content: 'Twotter is Awesome!' }
                     ]
                 }
             }
