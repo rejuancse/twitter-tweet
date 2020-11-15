@@ -8,19 +8,19 @@
             <div class="user-profile__follower-count">
                 <strong>Followers: </strong> {{ followers }}
             </div>
-            <form class="user-profile__create-wrapper">
+            <form class="user-profile__create-wrapper" @submit.prevent="createNewTwoot">
                 <label for="newTwoot"><strong>New Twoot</strong></label>
-                <textarea id="newTwoot" rows="4" />
+                <textarea id="newTwoot" rows="4" v-model="newTwootContent" />
 
                 <div class="user-profile__create-twoot-type">
                     <label for="newTwootType"><strong>Type: </strong></label>
-                    <select id="newTwootType">
+                    <select id="newTwootType" v-model="selectTwootType">
                         <option :value="option.value" v-for="(option, index) in twootTypes" :key="index">
                             {{ option.name }}
                         </option>
                     </select>
                 </div>
-
+                <button>Twoot!</button>
             </form>
 
         </div>
@@ -46,6 +46,8 @@
         components: { TwootItem },
         data() {
             return {
+                newTwootContent: '',
+                selectTwootType: 'instant',
                 twootTypes: [
                     { value: 'draft', name: 'Draft' },
                     { value: 'instant', name: 'Instant Twoot' },
@@ -60,7 +62,7 @@
                     isAdmin: true,
                     twoots: [
                         { id: 1, content: 'Twotter is Amazing' },
-                        { id: 2, content: 'Twotter is Awesome!' }
+                        { id: 2, content: 'Twotter is Awesome!2' },
                     ]
                 }
             }
@@ -86,6 +88,16 @@
             },
             toggleFavourite(id) {
                 console.log('Favourite', id)
+            },
+            createNewTwoot() {
+                if(this.newTwootContent && this.selectTwootType !== 'draft') {
+
+                    this.user.twoots.unshift({
+                        id: this.user.twoots.length + 1,
+                        content: this.newTwootContent,
+                    })
+
+                }
             }
         },
 
