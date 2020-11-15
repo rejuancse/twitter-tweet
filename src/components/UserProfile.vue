@@ -77,9 +77,9 @@
         },
 
         computed: {
-            fullname() {
-                return `${this.user.firstName} ${this.user.lastName}`;
-            }
+            // fullname() {
+            //     return `${this.user.firstName} ${this.user.lastName}`;
+            // }
         },
 
         methods: {
@@ -96,7 +96,7 @@
                         id: this.user.twoots.length + 1,
                         content: this.newTwootContent,
                     })
-
+                    this.newTwootContent = '';
                 }
             }
         },
@@ -107,42 +107,48 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .user-profile {
         display: grid;
         grid-template-columns: 1fr 3fr;
         width: 100%;
         padding: 50px 0;
         text-align: left;
+
+        .user-profile__user-panel {
+            display: flex;
+            flex-direction: column;
+            margin-right: 50px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid #dfe3e8;
+
+            h1 {
+                margin: 0;
+            }
+
+            .user-profile__admin-badge {
+                background: red;
+                color: #ffffff;
+                border-radius: 5px;
+                margin-right: auto;
+                margin-top: 6px;
+                margin-bottom: 6px;
+                padding: 3px 10px;
+                font-weight: bold;
+            }
+
+            .user-profile__create-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .user-profile__twoots-wrapper {
+            display: grid;
+            grid-gap: 10px;
+        }
     }
-    .user-profile__user-panel {
-        display: flex;
-        flex-direction: column;
-        margin-right: 50px;
-        padding: 20px;
-        background-color: white;
-        border-radius: 5px;
-        border: 1px solid #dfe3e8;
-    }
-    .user-profile__admin-badge {
-        background: red;
-        color: #ffffff;
-        border-radius: 5px;
-        margin-right: auto;
-        margin-top: 6px;
-        margin-bottom: 6px;
-        padding: 3px 10px;
-        font-weight: bold;
-    }
-    h1 {
-        margin: 0;
-    }
-    .user-profile__twoots-wrapper {
-        display: grid;
-        grid-gap: 10px;
-    }
-    .user-profile__create-wrapper {
-        display: flex;
-        flex-direction: column;
-    }
+    
 </style>

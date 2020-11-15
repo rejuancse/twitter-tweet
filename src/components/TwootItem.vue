@@ -33,7 +33,7 @@
     }
 </script>
 
-<style>
+<style lang="scss" scoped>
     .twoot-item {
         padding: 20px;
         background-color: #ffffff;
@@ -42,11 +42,13 @@
         box-sizing: border-box;
         cursor: pointer;
         transition: .3s;
-    }
-    .twoot-item:hover {
-        transform: scale(1.1, 1.1);
-    }
-    .twoot-item__user {
-        font-weight: bold;
+
+        &:hover {
+            transform: scale(1.1, 1.1);
+        }
+
+        .twoot-item__user {
+            font-weight: bold;
+        }
     }
 </style>
