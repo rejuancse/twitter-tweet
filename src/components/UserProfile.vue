@@ -8,8 +8,8 @@
             <div class="user-profile__follower-count">
                 <strong>Followers: </strong> {{ followers }}
             </div>
-            <form class="user-profile__create-wrapper" @submit.prevent="createNewTwoot">
-                <label for="newTwoot"><strong>New Twoot</strong></label>
+            <form class="user-profile__create-wrapper" @submit.prevent="createNewTwoot" :class="{ '--exceeded': newTwootCharacterCount > 180 }">
+                <label for="newTwoot"><strong>New Twoot</strong> ({{ newTwootCharacterCount }}/180) </label>
                 <textarea id="newTwoot" rows="4" v-model="newTwootContent" />
 
                 <div class="user-profile__create-twoot-type">
@@ -80,6 +80,9 @@
             // fullname() {
             //     return `${this.user.firstName} ${this.user.lastName}`;
             // }
+            newTwootCharacterCount() {
+                return this.newTwootContent.length;
+            }
         },
 
         methods: {
@@ -142,6 +145,17 @@
             .user-profile__create-wrapper {
                 display: flex;
                 flex-direction: column;
+
+                &.--exceeded {
+                    color: red;
+                    border-color: red;
+
+                    button {
+                        background-color: red;
+                        border: none;
+                        color: white;
+                    }
+                }
             }
         }
 
