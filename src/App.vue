@@ -1,5 +1,15 @@
 <template>
     <div id="app">
+
+        <nav>
+            <div class="navigation__logo">
+                Twooter
+            </div>
+            <div class="navigation__user">
+                {{ user.username }}
+            </div>
+        </nav>
+
         <UserProfile />
     </div>
 </template>
@@ -9,7 +19,14 @@
 
     export default {
         name: 'App',
-        components: { UserProfile }
+        components: { UserProfile },
+        data() {
+            return {
+                user: {
+                    username: '_rejuancse'
+                }
+            }
+        }
     }
 </script>
 
@@ -23,5 +40,5 @@
         display: flex;
         flex-direction: column;
         padding: 0 5%;
-    }
+    } 
 </style>

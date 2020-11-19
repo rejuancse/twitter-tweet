@@ -1,31 +1,18 @@
 <template>
     <div class="user-profile">
-        <div class="user-profile__user-panel">
-            <h1 class="user-profile__username">@{{ user.username }}</h1>
-            <div class="user-profile__admin-badge" v-if="user.isAdmin">
-                Admin
-            </div> 
-            <div class="user-profile__follower-count">
-                <strong>Followers: </strong> {{ followers }}
-            </div>
-            <form class="user-profile__create-wrapper" @submit.prevent="createNewTwoot" :class="{ '--exceeded': newTwootCharacterCount > 180 }">
-                <label for="newTwoot"><strong>New Twoot</strong> ({{ newTwootCharacterCount }}/180) </label>
-                <textarea id="newTwoot" rows="4" v-model="newTwootContent" />
-
-                <div class="user-profile__create-twoot-type">
-                    <label for="newTwootType"><strong>Type: </strong></label>
-                    <select id="newTwootType" v-model="selectTwootType">
-                        <option :value="option.value" v-for="(option, index) in twootTypes" :key="index">
-                            {{ option.name }}
-                        </option>
-                    </select>
+        <div class="user-profile__sidebar">
+            <div class="user-profile__user-panel">
+                <h1 class="user-profile__username">@{{ user.username }}</h1>
+                <div class="user-profile__admin-badge" v-if="user.isAdmin">
+                    Admin
+                </div> 
+                <div class="user-profile__follower-count">
+                    <strong>Followers: </strong> {{ followers }}
                 </div>
-                <button>Twoot!</button>
-            </form>
-
+            </div>
+            <CreateTwootPanel @add-twoot="addTwoot" />
         </div>
 
-        
         <div class="user-profile__twoots-wrapper">
             <TwootItem 
                 v-for="twoot in user.twoots" 
@@ -40,10 +27,11 @@
 
 <script>
     import TwootItem from "./TwootItem";
+    import CreateTwootPanel from "./CreateTwootPanel";
 
     export default {
         name: 'UserProfile',
-        components: { TwootItem },
+        components: { TwootItem, CreateTwootPanel },
         data() {
             return {
                 newTwootContent: '',
@@ -68,45 +56,12 @@
             }
         },
 
-        watch: {
-            followers(newFollowers, oldFollowers) {
-                if(oldFollowers < newFollowers) {
-                    console.log(`${this.user.username} has gained a Follower!`)
-                }
-            }
-        },
-
-        computed: {
-            // fullname() {
-            //     return `${this.user.firstName} ${this.user.lastName}`;
-            // }
-            newTwootCharacterCount() {
-                return this.newTwootContent.length;
-            }
-        },
-
         methods: {
-            followUser() {
-                this.followers++
-            },
-            toggleFavourite(id) {
-                console.log('Favourite', id)
-            },
-            createNewTwoot() {
-                if(this.newTwootContent && this.selectTwootType !== 'draft') {
-
-                    this.user.twoots.unshift({
-                        id: this.user.twoots.length + 1,
-                        content: this.newTwootContent,
-                    })
-                    this.newTwootContent = '';
-                }
+            addTwoot(twoot) {
+                this.user.twoots.unshift( {id: this.user.twoots.length + 1, content: twoot});
             }
         },
-
-        mounted() {
-            this.followUser();
-        }
+        
     }
 </script>
 

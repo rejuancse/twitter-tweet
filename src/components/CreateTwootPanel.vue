@@ -47,58 +47,21 @@
 </script>
 
 <style lang="scss" scoped>
-    .user-profile {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        width: 100%;
-        padding: 50px 0;
-        text-align: left;
+    .create-twoot-panel {
+        margin-top: 20px;
+        padding: 20px 0;
+        display: flex;
+        flex-direction: column;
 
-        .user-profile__user-panel {
-            display: flex;
-            flex-direction: column;
-            margin-right: 50px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
+        textarea {
             border: 1px solid #dfe3e8;
-
-            h1 {
-                margin: 0;
-            }
-
-            .user-profile__admin-badge {
-                background: red;
-                color: #ffffff;
-                border-radius: 5px;
-                margin-right: auto;
-                margin-top: 6px;
-                margin-bottom: 6px;
-                padding: 3px 10px;
-                font-weight: bold;
-            }
-
-            .user-profile__create-wrapper {
-                display: flex;
-                flex-direction: column;
-
-                &.--exceeded {
-                    color: red;
-                    border-color: red;
-
-                    button {
-                        background-color: red;
-                        border: none;
-                        color: white;
-                    }
-                }
-            }
+            border-radius: 5px;
         }
 
-        .user-profile__twoots-wrapper {
-            display: grid;
-            grid-gap: 10px;
+        .create-twoot-panel__submit {
+            background: #e3e3e3;
         }
+
     }
     
 </style>
