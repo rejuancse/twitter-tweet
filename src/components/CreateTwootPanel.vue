@@ -1,17 +1,19 @@
 <template>
-    <form class="user-profile__create-wrapper" @submit.prevent="createNewTwoot" :class="{ '--exceeded': newTwootCharacterCount > 180 }">
+    <form class="create-twoot-panel" @submit.prevent="createNewTwoot" :class="{ '--exceeded': newTwootCharacterCount > 180 }">
         <label for="newTwoot"><strong>New Twoot</strong> ({{ newTwootCharacterCount }}/180) </label>
         <textarea id="newTwoot" rows="4" v-model="newTwootContent" />
-
-        <div class="user-profile__create-twoot-type">
-            <label for="newTwootType"><strong>Type: </strong></label>
-            <select id="newTwootType" v-model="selectTwootType">
-                <option :value="option.value" v-for="(option, index) in twootTypes" :key="index">
-                    {{ option.name }}
-                </option>
-            </select>
+        
+        <div class="create-twoot-panel__submit">
+            <div class="create-twoot-type">
+                <label for="newTwootType"><strong>Type: </strong></label>
+                <select id="newTwootType" v-model="selectTwootType">
+                    <option :value="option.value" v-for="(option, index) in twootTypes" :key="index">
+                        {{ option.name }}
+                    </option>
+                </select>
+            </div>
+            <button>Twoot!</button>
         </div>
-        <button>Twoot!</button>
     </form>
 </template>
 
@@ -52,16 +54,40 @@
         padding: 20px 0;
         display: flex;
         flex-direction: column;
+        margin-right: 50px;
+        background-color: white;
+            textarea {
+                border: 1px solid #DFE3E8;
+                border-radius: 5px;
+            }
+            .create-twoot-panel__submit {
+                display: flex;
+                justify-content: space-between;
 
-        textarea {
-            border: 1px solid #dfe3e8;
-            border-radius: 5px;
+                .create-twoot-type {
+                    padding: 10px 0;
+                }
+
+                button {
+                padding: 5px 20px;
+                margin: auto 0;
+                border-radius: 5px;
+                border: none;
+                background-color: deeppink;
+                color: white;
+                font-weight: bold;
+                }
+            }
+        &.--exceeded {
+            color: red;
+            border-color: red;
+            .create-twoot-panel__submit {
+
+                button {
+                    background-color: red;
+                    color: white;
+                }
+            }
         }
-
-        .create-twoot-panel__submit {
-            background: #e3e3e3;
-        }
-
     }
-    
 </style>

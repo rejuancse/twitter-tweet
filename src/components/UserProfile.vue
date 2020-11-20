@@ -87,7 +87,7 @@
             }
 
             .user-profile__admin-badge {
-                background: red;
+                background: rgb(135, 115, 245);
                 color: #ffffff;
                 border-radius: 5px;
                 margin-right: auto;

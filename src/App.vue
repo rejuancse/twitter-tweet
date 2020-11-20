@@ -40,5 +40,25 @@
         display: flex;
         flex-direction: column;
         padding: 0 5%;
+
+        nav {
+            background: #e35c93;
+            color: #fff;
+            padding: 14px 20px;
+            font-size: 20px;
+
+            .navigation__logo {
+                text-align: left;
+                width: 50%;
+                float: left;
+                font-weight: bold;
+            }
+
+            .navigation__user {
+                text-align: right;
+                width: 50%;
+                float: right;
+            }
+        }
     } 
 </style>

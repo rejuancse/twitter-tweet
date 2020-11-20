@@ -25,11 +25,11 @@
                 required: true
             }
         },
-        methods: {
-            favouriteTwoot(id) {
-                this.$emit('favourite', id)
-            }
-        }
+        // methods: {
+        //     favouriteTwoot(id) {
+        //         this.$emit('favourite', id)
+        //     }
+        // }
     }
 </script>
 
@@ -44,7 +44,7 @@
         transition: .3s;
 
         &:hover {
-            transform: scale(1.1, 1.1);
+            transform: scale(1.03, 1.03);
         }
 
         .twoot-item__user {
