@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-
         <nav>
             <div class="navigation__logo">
                 Twooter
@@ -9,7 +8,6 @@
                 {{ user.username }}
             </div>
         </nav>
-
         <UserProfile />
     </div>
 </template>

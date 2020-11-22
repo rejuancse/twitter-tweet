@@ -34,12 +34,6 @@
         components: { TwootItem, CreateTwootPanel },
         data() {
             return {
-                newTwootContent: '',
-                selectTwootType: 'instant',
-                twootTypes: [
-                    { value: 'draft', name: 'Draft' },
-                    { value: 'instant', name: 'Instant Twoot' },
-                ],
                 followers: 0,
                 user: {
                     id: 1,
@@ -54,7 +48,7 @@
                     ]
                 }
             }
-        },
+        }, 
 
         methods: {
             addTwoot(twoot) {
